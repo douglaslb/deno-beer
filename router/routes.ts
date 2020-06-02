@@ -8,3 +8,5 @@ router.get('/:id', beerController.show)
 router.post('/', beerController.store)
 router.put('/:id', beerController.update)
 router.delete('/:id', beerController.delete)
+
+export { router }
