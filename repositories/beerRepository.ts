@@ -19,7 +19,7 @@ class BeerRepository {
 
   async update(id: number, beer: Beer) {
     return client.query({
-      text: 'UPDATE beers SET name=$1 and price=$2',
+      text: 'UPDATE beers SET name=$1, price=$2 WHERE id=$3',
       args: [beer.name, beer.price, id]
     })
   }

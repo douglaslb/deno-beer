@@ -28,13 +28,11 @@ class BeerController {
 
   async update(context: RouterContext) {
     const result = await context.request.body(
-      { contentTypes: { text: ['application/json'] } }
-    )
-
-    const beer = result.value
-    const { id } = beer
-
-    await beerService.updateBeer(parseInt(id!), beer)
+      { contentTypes: { text: ["application/json"] } },
+    );
+    const beer = result.value;
+    const { id } = context.params;
+    await beerService.updateBeer(parseInt(id!), beer);
 
     context.response.headers.set("Content-Type", "application/json");
     context.response.body = { message: "success" };

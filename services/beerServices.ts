@@ -6,9 +6,9 @@ class BeerService {
     const result = await beerRepository.all()
     const beers = new Array<Beer>()
 
-    result.rows.map((beer: any) => {
+    result.rows.map((beer) => {
       var temp: any = {}
-      result.rowDescription.columns.map((item: Beer, index: number) => {
+      result.rowDescription.columns.map((item, index) => {
         temp[item.name] = beer[index]
       })
       beers.push(temp)
@@ -21,8 +21,8 @@ class BeerService {
 
     var beer: any = {}
 
-    result.rows.map((items: any) => {
-      result.rowDescription.columns.map((item: Beer, index: number) => {
+    result.rows.map((items) => {
+      result.rowDescription.columns.map((item, index) => {
         beer[item.name] = items[index]
       })
     })
@@ -33,11 +33,11 @@ class BeerService {
     return await beerRepository.create(beer)
   }
 
-  update = async (id: number, beer: Beer) => {
+  updateBeer = async (id: number, beer: Beer) => {
     return await beerRepository.update(id, beer)
   }
 
-  delete = async (id: number) => {
+  deleteBeer = async (id: number) => {
     return await beerRepository.delete(id)
   }
 }
